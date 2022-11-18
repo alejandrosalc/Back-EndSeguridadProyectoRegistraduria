@@ -99,8 +99,7 @@ public class ControladorUsuario {
     @PostMapping("/validar")
     public Usuario validate(@RequestBody  Usuario infoUsuario,
                             final HttpServletResponse response) throws IOException {
-        Usuario usuarioActual=this.miRepositorioUsuario
-                .getUserByEmail(infoUsuario.getCorreo());
+        Usuario usuarioActual=this.miRepositorioUsuario.getUserByEmail(infoUsuario.getCorreo());
         if (usuarioActual!=null &&
                 usuarioActual.getContrasena().equals(convertirSHA256(infoUsuario.getContrasena()))) {
             usuarioActual.setContrasena("");
